@@ -5,8 +5,6 @@
 #include "Shader.h"
 #include "Player.h"
 
-GLFWwindow* window;
-
 const int width = 900;
 const int height = 900;
 
@@ -20,7 +18,7 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	window = glfwCreateWindow(width, height, "DearImGUI", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(width, height, "DearImGUI", NULL, NULL);
 	if (!window)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;

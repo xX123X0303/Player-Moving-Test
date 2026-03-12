@@ -2,6 +2,9 @@
 #include "glm/glm.hpp"
 #include "Quad.h"
 
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
 class Player
 {
 public:
@@ -13,5 +16,5 @@ public:
 	Player();
 
 	void Update(float deltaTime);
-	void Draw(Quad& quad);
+	void Draw(GLFWwindow* window, Quad& quad);
 };

@@ -1,7 +1,4 @@
 #include "Player.h"
-#include <GLFW/glfw3.h>
-
-extern GLFWwindow* window;
 
 Player::Player()
 {
@@ -10,7 +7,7 @@ Player::Player()
 	speed = 1.0f;
 }
 
-void Player::Update(float deltaTime)
+void Player::Update(GLFWwindow* window, float deltaTime)
 {
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) x -= speed * deltaTime;
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) x += speed * deltaTime;
