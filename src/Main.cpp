@@ -51,7 +51,7 @@ int main()
 			glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
-			player.Update(deltaTime);
+			player.Update(window, deltaTime);
 			player.Draw(quad);
 
 			glfwSwapBuffers(window);

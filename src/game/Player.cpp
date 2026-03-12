@@ -1,4 +1,5 @@
 #include "Player.h"
+#include <GLFW/glfw3.h>
 
 Player::Player()
 {

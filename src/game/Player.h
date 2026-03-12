@@ -1,9 +1,8 @@
 #pragma once
-#include "glm/glm.hpp"
-#include "Quad.h"
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+struct GLFWwindow;
+
+#include "Quad.h"
 
 class Player
 {
@@ -15,6 +14,6 @@ public:
 
 	Player();
 
-	void Update(float deltaTime);
-	void Draw(GLFWwindow* window, Quad& quad);
+	void Update(GLFWwindow* window, float deltaTime);
+	void Draw(Quad& quad);
 };
