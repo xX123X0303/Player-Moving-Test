@@ -12,6 +12,7 @@ std::string get_content_file(const char* filename)
 		in.seekg(0, std::ios::beg);
 		in.read(&contents[0], contents.size());
 		in.close();
+		return contents;
 	}
 	else throw(errno);
 }
@@ -49,4 +50,14 @@ Shader::~Shader()
 void Shader::Activate()
 {
 	glUseProgram(ID);
+}
+
+void Shader::SetFloat(const std::string& name, float value) const
+{
+	glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
+}
+
+void Shader::SetMat4(const std::string& name, glm::mat4& value) const
+{
+	glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
 }

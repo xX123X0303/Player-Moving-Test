@@ -71,11 +71,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\ASUS\OneDrive\Desktop\2026 Projects\3_March\Player-Moving-Test\vendor\glad\include;C:\Users\ASUS\OneDrive\Desktop\2026 Projects\3_March\Player-Moving-Test\vendor\glfw\include;C:\Users\ASUS\OneDrive\Desktop\2026 Projects\3_March\Player-Moving-Test\vendor\glm\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\ASUS\OneDrive\Desktop\2026 Projects\3_March\Player-Moving-Test\vendor\glad\include;C:\Users\ASUS\OneDrive\Desktop\2026 Projects\3_March\Player-Moving-Test\vendor\glfw\include;C:\Users\ASUS\OneDrive\Desktop\2026 Projects\3_March\Player-Moving-Test\vendor\glm\include;C:\Users\ASUS\OneDrive\Desktop\2026 Projects\3_March\Player-Moving-Test\vendor\stb;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\ASUS\OneDrive\Desktop\2026 Projects\3_March\Player-Moving-Test\vendor\glfw\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\ASUS\OneDrive\Desktop\2026 Projects\3_March\Player-Moving-Test\vendor\glad\include;C:\Users\ASUS\OneDrive\Desktop\2026 Projects\3_March\Player-Moving-Test\vendor\glfw\include;C:\Users\ASUS\OneDrive\Desktop\2026 Projects\3_March\Player-Moving-Test\vendor\glm\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\ASUS\OneDrive\Desktop\2026 Projects\3_March\Player-Moving-Test\vendor\glad\include;C:\Users\ASUS\OneDrive\Desktop\2026 Projects\3_March\Player-Moving-Test\vendor\glfw\include;C:\Users\ASUS\OneDrive\Desktop\2026 Projects\3_March\Player-Moving-Test\vendor\glm\include;C:\Users\ASUS\OneDrive\Desktop\2026 Projects\3_March\Player-Moving-Test\vendor\stb;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\ASUS\OneDrive\Desktop\2026 Projects\3_March\Player-Moving-Test\vendor\glfw\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -139,8 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\engine\Background.cpp" />
+    <ClCompile Include="..\src\engine\Enemy.cpp" />
     <ClCompile Include="..\src\engine\Quad.cpp" />
     <ClCompile Include="..\src\engine\Shader.cpp" />
+    <ClCompile Include="..\src\engine\stb.cpp" />
+    <ClCompile Include="..\src\engine\Texture.cpp" />
     <ClCompile Include="..\src\engine\UI.cpp" />
     <ClCompile Include="..\src\game\Player.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
@@ -154,14 +158,28 @@
     <ClCompile Include="..\vendor\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\engine\Background.h" />
+    <ClInclude Include="..\src\engine\Enemy.h" />
     <ClInclude Include="..\src\engine\Quad.h" />
     <ClInclude Include="..\src\engine\Shader.h" />
+    <ClInclude Include="..\src\engine\Texture.h" />
     <ClInclude Include="..\src\game\Player.h" />
     <ClInclude Include="..\src\UI.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\assets\shaders\default.frag" />
-    <None Include="..\assets\shaders\default.vert" />
+    <Text Include="..\assets\shaders\default.frag">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copy if newer</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Copy if newer</DeploymentContent>
+      <FileType>Document</FileType>
+    </Text>
+    <None Include="..\assets\shaders\default.vert">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copy if newer</DeploymentContent>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Copy if newer</DeploymentContent>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

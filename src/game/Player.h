@@ -3,17 +3,26 @@
 struct GLFWwindow;
 
 #include "Quad.h"
+#include "Shader.h"
+#include "Texture.h"
 
 class Player
 {
 public:
-	float x;
-	float y;
+	Player(GLFWwindow* window);
 
-	float speed;
+	float x = 0.0f;
+	float y = 0.0f;
 
-	Player();
+	int WinWidth, WinHeight;
+	float ImgWidth, ImgHeight;
+
+	float speed = 0.8f;
+	float rotation = 0.0f;
 
 	void Update(GLFWwindow* window, float deltaTime);
-	void Draw(Quad& quad);
+	void Draw(Quad& quad, Shader& shader);
+
+private:
+	Texture* texture = nullptr;
 };

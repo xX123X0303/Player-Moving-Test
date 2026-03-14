@@ -1,11 +1,13 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include <filesystem>
 
 #include "Shader.h"
 #include "Player.h"
+#include "Background.h"
 
-const int width = 900;
+const int width = 1500;
 const int height = 900;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -18,7 +20,7 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow* window = glfwCreateWindow(width, height, "DearImGUI", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(width, height, "Player-Moving-Test", NULL, NULL);
 	if (!window)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -34,10 +36,14 @@ int main()
 		return -1;
 	}
 
-	Player player;
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
 	{
-		Shader shader("shaders/default.vert", "shaders/default.frag");
+		Shader shader("../assets/shaders/default.vert", "../assets/shaders/default.frag");
 		Quad quad;
+		Background background(window);
+		Player player(window);
 
 		while (!glfwWindowShouldClose(window))
 		{
@@ -51,8 +57,10 @@ int main()
 			glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
+			background.Draw(quad, shader);
+			player.Draw(quad, shader);
+
 			player.Update(window, deltaTime);
-			player.Draw(quad);
 
 			glfwSwapBuffers(window);
 			glfwPollEvents();
